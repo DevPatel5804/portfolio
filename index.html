@@ -119,11 +119,11 @@
       </div>
       <div class="hero-visual reveal">
         <div class="hero-avatar-wrapper">
-          <img src="assets/avatar.png" alt="Dev Patel" class="hero-avatar" />
-          <div class="hero-avatar-ring"></div>
-          <div class="hero-float-card">🔥 .NET Core</div>
-          <div class="hero-float-card">☁️ AWS Cloud</div>
-          <div class="hero-float-card">⚡ Real-Time Systems</div>
+          <div class="blob-gradient"></div>
+          <img src="assets/avatar.png" alt="Dev Patel" class="hero-avatar blob-shape" />
+          <div class="hero-float-card card-1">🔥 .NET Core</div>
+          <div class="hero-float-card card-2">☁️ AWS Cloud</div>
+          <div class="hero-float-card card-3">⚡ Real-Time Systems</div>
         </div>
       </div>
     </div>
@@ -988,10 +988,9 @@
     setupCursorHovers();
 
     function animateGlow() {
-      glowX += (mouseX - glowX) * 0.1;
-      glowY += (mouseY - glowY) * 0.1;
-      cursorGlow.style.left = glowX + 'px';
-      cursorGlow.style.top = glowY + 'px';
+      glowX += (mouseX - glowX) * 0.15;
+      glowY += (mouseY - glowY) * 0.15;
+      cursorGlow.style.transform = `translate3d(calc(${glowX}px - 50%), calc(${glowY}px - 50%), 0)`;
       requestAnimationFrame(animateGlow);
     }
     animateGlow();
