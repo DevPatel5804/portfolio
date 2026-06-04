@@ -564,8 +564,8 @@ button {
 }
 
 .hero-avatar.blob-shape {
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 120%;
   object-fit: cover;
   border: 4px solid rgba(255, 255, 255, 0.1);
   animation: blobShape 8s ease-in-out infinite alternate-reverse;
@@ -627,7 +627,7 @@ button {
 }
 
 .hero-float-card.card-2 {
-  bottom: 15%;
+  bottom: 25%;
   left: -40px;
   animation: floatCard2 6s ease-in-out infinite;
   animation-delay: -2s;
@@ -1926,7 +1926,7 @@ button {
   }
 
   .hero-float-card.card-2 {
-    left: -10px;
+    left: -30px;
   }
 
   .hero-float-card.card-3 {
