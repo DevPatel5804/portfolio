@@ -1558,8 +1558,13 @@ button {
   }
 
   .hero-role {
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    font-size: 1.5rem;
+    justify-self: center;
+  }
+
+  .hero-subtitle {
+    justify-self: center;
   }
 
   .hero-actions {
@@ -1671,11 +1676,25 @@ button {
   }
 
   .hero-role {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    justify-self: center;
   }
 
   .hero-float-card {
-    display: none;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-float-card.card-1 {
+    right: -15px;
+  }
+
+  .hero-float-card.card-2 {
+    left: -20px;
+  }
+
+  .hero-float-card.card-3 {
+    right: -10px;
   }
 
   .about-text p {
@@ -1732,11 +1751,8 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .hero-role {
-    justify-content: center;
-  }
-
   .hero-subtitle {
+    justify-self: center;
     font-size: 0.92rem;
   }
 
@@ -1768,7 +1784,14 @@ button {
   }
 
   .hero-role {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
+    justify-self: center;
+  }
+
+  .hero-subtitle {
+    justify-self: center;
+    font-size: 0.82rem;
+    line-height: 1.7;
   }
 
   .hero-stats {
@@ -1849,9 +1872,11 @@ button {
     font-size: 0.88rem;
     line-height: 1.6;
     min-height: 2em;
+    justify-self: center;
   }
 
   .hero-subtitle {
+    justify-self: center;
     font-size: 0.82rem;
     line-height: 1.7;
   }
@@ -1889,6 +1914,23 @@ button {
   .hero-avatar-wrapper {
     width: 180px;
     height: 180px;
+  }
+
+  .hero-float-card {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.6rem;
+  }
+
+  .hero-float-card.card-1 {
+    right: -10px;
+  }
+
+  .hero-float-card.card-2 {
+    left: -10px;
+  }
+
+  .hero-float-card.card-3 {
+    right: -5px;
   }
 
   .hero-stats {
@@ -2029,6 +2071,7 @@ button {
   }
 
   .hero-role {
+    margin-right: 0px;
     font-size: 0.82rem;
   }
 
