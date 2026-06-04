@@ -1563,6 +1563,23 @@ button {
     justify-self: center;
   }
 
+  .hero-float-card {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-float-card.card-1 {
+    right: -35px;
+  }
+
+  .hero-float-card.card-2 {
+    left: -20px;
+  }
+
+  .hero-float-card.card-3 {
+    right: -10px;
+  }
+
   .hero-subtitle {
     justify-self: center;
   }
@@ -1686,7 +1703,7 @@ button {
   }
 
   .hero-float-card.card-1 {
-    right: -15px;
+    right: -35px;
   }
 
   .hero-float-card.card-2 {
@@ -1922,7 +1939,7 @@ button {
   }
 
   .hero-float-card.card-1 {
-    right: -10px;
+    right: -40px;
   }
 
   .hero-float-card.card-2 {
@@ -2079,6 +2096,23 @@ button {
     margin: 50px 0px -50px 0;
     width: 160px;
     height: 160px;
+  }
+
+  .hero-float-card {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  .hero-float-card.card-1 {
+    right: -35px;
+  }
+
+  .hero-float-card.card-2 {
+    left: -30px;
+  }
+
+  .hero-float-card.card-3 {
+    right: -10px;
   }
 
   .section-title {
