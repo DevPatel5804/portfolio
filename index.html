@@ -966,20 +966,57 @@
     // ---- Cursor Glow ----
     const cursorGlow = document.getElementById('cursorGlow');
     let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+    let isGlowVisible = false;
 
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (!isGlowVisible) {
+        isGlowVisible = true;
+        cursorGlow.classList.add('visible');
+      }
     });
 
+    // Handle interactive hover scaling
+    function setupCursorHovers() {
+      const interactives = document.querySelectorAll('a, button, .tech-card, .cert-card, .project-card, .experience-card, .about-info-item, .contact-item');
+      interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => cursorGlow.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => cursorGlow.classList.remove('hovered'));
+      });
+    }
+    setupCursorHovers();
+
     function animateGlow() {
-      glowX += (mouseX - glowX) * 0.08;
-      glowY += (mouseY - glowY) * 0.08;
+      glowX += (mouseX - glowX) * 0.1;
+      glowY += (mouseY - glowY) * 0.1;
       cursorGlow.style.left = glowX + 'px';
       cursorGlow.style.top = glowY + 'px';
       requestAnimationFrame(animateGlow);
     }
     animateGlow();
+
+    // ---- Hero 3D Card Tilt ----
+    const heroVisual = document.querySelector('.hero-visual');
+    const avatarWrapper = document.querySelector('.hero-avatar-wrapper');
+
+    if (heroVisual && avatarWrapper) {
+      heroVisual.addEventListener('mousemove', e => {
+        const rect = heroVisual.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        // Calculate rotation angles (max 20 degrees)
+        const rotateX = -(y / rect.height) * 20;
+        const rotateY = (x / rect.width) * 20;
+
+        avatarWrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      heroVisual.addEventListener('mouseleave', () => {
+        avatarWrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    }
 
     // ---- Smooth Scroll ----
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
