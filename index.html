@@ -22,10 +22,79 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
 
+  <!-- DevTools Protection (early, before DOM is ready) -->
+  <script>
+    (function() {
+      // Block right-click
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showRestriction();
+      });
+
+      // Block keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12') { e.preventDefault(); showRestriction(); return; }
+        // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); showRestriction(); return; }
+        // Ctrl+U (view source)
+        if (e.ctrlKey && e.key.toUpperCase() === 'U') { e.preventDefault(); showRestriction(); return; }
+        // Ctrl+S (save)
+        if (e.ctrlKey && e.key.toUpperCase() === 'S') { e.preventDefault(); showRestriction(); return; }
+      });
+
+      function showRestriction() {
+        var modal = document.getElementById('restriction-modal');
+        if (modal) {
+          modal.classList.add('visible');
+          setTimeout(function() { modal.classList.remove('visible'); }, 3000);
+        }
+      }
+
+      // Close on click overlay
+      document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('restriction-modal');
+        if (modal) {
+          modal.addEventListener('click', function() { modal.classList.remove('visible'); });
+        }
+      });
+    })();
+  </script>
 </head>
 
 <body>
+
+  <!-- Restriction Modal -->
+  <div id="restriction-modal">
+    <div id="restriction-box">
+      <!-- Shield Icon -->
+      <div id="restriction-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2zm0 10.5h-1.5V7.5H12v5zm0 3h-1.5V14H12v1.5z"/>
+        </svg>
+      </div>
+
+      <h2 id="restriction-title">Security Alert</h2>
+      <p id="restriction-msg">Developer tools are disabled to maintain the security and integrity of this application.</p>
+
+      <!-- Copyright Notice Box -->
+      <div id="restriction-copyright-box">
+        <div id="restriction-copyright-label">COPYRIGHT NOTICE</div>
+        <p id="restriction-copyright-text">The source code, design, and content of this site are protected by copyright. Unauthorized copying or republishing will result in a DMCA takedown. Your access has been logged.</p>
+      </div>
+
+      <!-- Reload Button -->
+      <button id="restriction-reload-btn" onclick="location.reload()">Reload Page</button>
+
+      <!-- Footer -->
+      <div id="restriction-footer">
+        <span id="restriction-copyright">&copy; 2024&ndash;2026 Dev Patel. All rights reserved.</span>
+        <a id="restriction-terms" href="#" onclick="return false;">Legal Terms &amp; Conditions &rarr;</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Page Loader -->
   <div class="page-loader" id="pageLoader">
@@ -33,6 +102,7 @@
   </div>
 
   <!-- Background Effects -->
+  <canvas id="webgl-bg"></canvas>
   <div class="bg-grid"></div>
   <div class="bg-gradient-orb bg-gradient-orb--purple"></div>
   <div class="bg-gradient-orb bg-gradient-orb--blue"></div>
@@ -193,7 +263,7 @@
     <!-- Tech Grid -->
     <div class="tech-grid reveal reveal-delay-2">
       <!-- Languages -->
-      <div class="tech-card" data-category="languages" style="--brand-color: #68217a; --brand-color-rgb: 104, 33, 122;">
+      <div class="tech-card" data-category="languages">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-csharp-plain tech-card-icon"></i>
         </div>
@@ -203,7 +273,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="languages" style="--brand-color: #f7df1e; --brand-color-rgb: 247, 223, 30;">
+      <div class="tech-card" data-category="languages">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-javascript-plain tech-card-icon"></i>
         </div>
@@ -213,7 +283,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="languages" style="--brand-color: #3776ab; --brand-color-rgb: 55, 118, 171;">
+      <div class="tech-card" data-category="languages">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-python-plain tech-card-icon"></i>
         </div>
@@ -223,7 +293,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="languages" style="--brand-color: #00bcff; --brand-color-rgb: 0, 188, 255;">
+      <div class="tech-card" data-category="languages">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -238,7 +308,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="languages" style="--brand-color: #e34f26; --brand-color-rgb: 227, 79, 38;">
+      <div class="tech-card" data-category="languages">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-html5-plain tech-card-icon"></i>
         </div>
@@ -248,7 +318,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="languages" style="--brand-color: #1572b6; --brand-color-rgb: 21, 114, 182;">
+      <div class="tech-card" data-category="languages">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-css3-plain tech-card-icon"></i>
         </div>
@@ -259,7 +329,7 @@
       </div>
 
       <!-- Frameworks -->
-      <div class="tech-card" data-category="frameworks" style="--brand-color: #512bd4; --brand-color-rgb: 81, 43, 212;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-dot-net-plain tech-card-icon"></i>
         </div>
@@ -269,7 +339,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="frameworks" style="--brand-color: #0078d4; --brand-color-rgb: 0, 120, 212;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-dot-net-plain tech-card-icon"></i>
         </div>
@@ -279,7 +349,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="frameworks" style="--brand-color: #1b6060; --brand-color-rgb: 27, 96, 96;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -300,7 +370,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="frameworks" style="--brand-color: #ff2d20; --brand-color-rgb: 255, 45, 32;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-laravel-original tech-card-icon"></i>
         </div>
@@ -310,8 +380,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="frameworks"
-        style="--brand-color: #61dafb; --brand-color-rgb: 97, 218, 251;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-react-original tech-card-icon"></i>
         </div>
@@ -321,8 +390,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="frameworks"
-        style="--brand-color: #8b5cf6; --brand-color-rgb: 139, 92, 246;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-express-original tech-card-icon"></i>
         </div>
@@ -332,8 +400,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="frameworks"
-        style="--brand-color: #7952b3; --brand-color-rgb: 121, 82, 179;">
+      <div class="tech-card" data-category="frameworks">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-bootstrap-plain tech-card-icon"></i>
         </div>
@@ -344,7 +411,7 @@
       </div>
 
       <!-- Cloud & DevOps -->
-      <div class="tech-card" data-category="cloud" style="--brand-color: #ff9900; --brand-color-rgb: 255, 153, 0;">
+      <div class="tech-card" data-category="cloud">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -360,7 +427,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="cloud" style="--brand-color: #ff9900; --brand-color-rgb: 255, 153, 0;">
+      <div class="tech-card" data-category="cloud">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -376,7 +443,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="cloud" style="--brand-color: #ff9900; --brand-color-rgb: 255, 153, 0;">
+      <div class="tech-card" data-category="cloud">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -389,7 +456,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="cloud" style="--brand-color: #4053d6; --brand-color-rgb: 64, 83, 214;">
+      <div class="tech-card" data-category="cloud">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -404,7 +471,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="cloud" style="--brand-color: #0089d6; --brand-color-rgb: 0, 137, 214;">
+      <div class="tech-card" data-category="cloud">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-azure-plain tech-card-icon"></i>
         </div>
@@ -414,7 +481,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="cloud" style="--brand-color: #2496ed; --brand-color-rgb: 36, 150, 237;">
+      <div class="tech-card" data-category="cloud">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-docker-plain tech-card-icon"></i>
         </div>
@@ -425,7 +492,7 @@
       </div>
 
       <!-- Databases -->
-      <div class="tech-card" data-category="databases" style="--brand-color: #336791; --brand-color-rgb: 51, 103, 145;">
+      <div class="tech-card" data-category="databases">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-postgresql-plain tech-card-icon"></i>
         </div>
@@ -435,7 +502,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="databases" style="--brand-color: #dc382d; --brand-color-rgb: 220, 56, 45;">
+      <div class="tech-card" data-category="databases">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-redis-plain tech-card-icon"></i>
         </div>
@@ -445,7 +512,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="databases" style="--brand-color: #003b57; --brand-color-rgb: 0, 59, 87;">
+      <div class="tech-card" data-category="databases">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-sqlite-plain tech-card-icon"></i>
         </div>
@@ -455,7 +522,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="databases" style="--brand-color: #00758f; --brand-color-rgb: 0, 117, 143;">
+      <div class="tech-card" data-category="databases">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-mysql-plain tech-card-icon"></i>
         </div>
@@ -465,7 +532,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="databases" style="--brand-color: #cc292b; --brand-color-rgb: 204, 41, 43;">
+      <div class="tech-card" data-category="databases">
         <div class="tech-card-icon-wrapper">
           <i class="devicon-microsoftsqlserver-plain tech-card-icon"></i>
         </div>
@@ -476,8 +543,7 @@
       </div>
 
       <!-- Industrial -->
-      <div class="tech-card" data-category="industrial"
-        style="--brand-color: #f5a623; --brand-color-rgb: 245, 166, 35;">
+      <div class="tech-card" data-category="industrial">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -494,7 +560,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="industrial" style="--brand-color: #00b4d8; --brand-color-rgb: 0, 180, 216;">
+      <div class="tech-card" data-category="industrial">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -516,8 +582,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="industrial"
-        style="--brand-color: #9b5de5; --brand-color-rgb: 155, 93, 229;">
+      <div class="tech-card" data-category="industrial">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -533,8 +598,7 @@
         </div>
       </div>
 
-      <div class="tech-card" data-category="industrial"
-        style="--brand-color: #f15bb5; --brand-color-rgb: 241, 91, 181;">
+      <div class="tech-card" data-category="industrial">
         <div class="tech-card-icon-wrapper">
           <svg class="tech-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -933,7 +997,39 @@
     </svg>
   </button>
 
-  <!-- ========== JAVASCRIPT ========== -->
+  <!-- Command Palette (⌘K) -->
+  <div class="command-palette-overlay" id="commandPalette">
+    <div class="command-palette">
+      <div class="command-header">
+        <input type="text" id="commandInput" placeholder="Type a command or search..." autocomplete="off" />
+        <span class="command-close" id="commandClose">&times;</span>
+      </div>
+      <div class="command-body">
+        <div class="command-group">
+          <div class="command-group-title">Navigation</div>
+          <a href="#about" class="command-item"><span>About Me</span><span class="command-shortcut">A</span></a>
+          <a href="#experience" class="command-item"><span>Experience</span><span class="command-shortcut">E</span></a>
+          <a href="#projects" class="command-item"><span>View Projects</span><span class="command-shortcut">P</span></a>
+          <a href="#contact" class="command-item"><span>Contact</span><span class="command-shortcut">C</span></a>
+        </div>
+        <div class="command-group">
+          <div class="command-group-title">Actions</div>
+          <a href="assets/Dev_Patel_Resume.pdf" download class="command-item"><span>Download Resume</span><span
+              class="command-shortcut">R</span></a>
+          <div class="command-item theme-toggle-btn"><span>Toggle Theme</span><span class="command-shortcut">T</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+
+  <!-- ========== INLINE JAVASCRIPT ========== -->
   <script>
     // ---- Page Loader ----
     window.addEventListener('load', () => {
