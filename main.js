@@ -1,4 +1,3 @@
-"use strict";
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 1. LENIS SMOOTH SCROLLING
