@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-            // ==========================================
+    // ==========================================
     // 2. WEBGL / CANVAS INTERACTIVE BACKGROUND
     // ==========================================
     const canvas = document.getElementById('webgl-bg');

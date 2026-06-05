@@ -2577,7 +2577,7 @@ button {
   display: block;
   width: 100%;
   padding: 0.85rem 1.5rem;
-  background: var(--bg-secondary);
+  background: #fcfcfc;
   color: #000000;
   border: none;
   border-radius: 10px;
@@ -2590,8 +2590,8 @@ button {
 }
 
 #restriction-reload-btn:hover {
-  background: #e5e5e5;
   transform: scale(1.01);
+  background: #fcfcfc;
 }
 
 /* Divider + Footer */
