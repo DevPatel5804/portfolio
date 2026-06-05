@@ -1,3 +1,4 @@
+"use strict";
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 1. LENIS SMOOTH SCROLLING
@@ -23,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Synchronize Lenis with GSAP ScrollTrigger
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time)=>{
+    gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
 
@@ -35,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // GSAP Scroll Reveals (Sections)
     const sections = gsap.utils.toArray('.section');
     sections.forEach(section => {
-      gsap.fromTo(section, 
+      gsap.fromTo(section,
         { y: 50, opacity: 0 },
         {
-          y: 0, 
+          y: 0,
           opacity: 1,
           duration: 1,
           ease: "power3.out",
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
     let particles = [];
-    
+
     const mouse = { x: null, y: null, radius: 150 };
 
     window.addEventListener('mousemove', (e) => {
@@ -160,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         particles[i].update();
       }
     }
-    
+
     initParticles();
     animateParticles();
   }
@@ -172,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const paletteInput = document.getElementById('commandInput');
   const paletteClose = document.getElementById('commandClose');
   const paletteItems = document.querySelectorAll('.command-item');
-  
+
   if (paletteOverlay) {
     // Toggle Palette
     const togglePalette = () => {
@@ -240,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const position = el.getBoundingClientRect();
       const x = e.clientX - position.left - position.width / 2;
       const y = e.clientY - position.top - position.height / 2;
-      
+
       gsap.to(el, {
         x: x * 0.35,
         y: y * 0.35,
@@ -260,6 +261,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-
 
 });

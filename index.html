@@ -26,19 +26,19 @@
 
   <!-- DevTools Protection (early, before DOM is ready) -->
   <script>
-    (function() {
+    (function () {
       // Block right-click
-      document.addEventListener('contextmenu', function(e) {
+      document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
         showRestriction();
       });
 
       // Block keyboard shortcuts
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         // F12
         if (e.key === 'F12') { e.preventDefault(); showRestriction(); return; }
         // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
-        if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); showRestriction(); return; }
+        if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) { e.preventDefault(); showRestriction(); return; }
         // Ctrl+U (view source)
         if (e.ctrlKey && e.key.toUpperCase() === 'U') { e.preventDefault(); showRestriction(); return; }
         // Ctrl+S (save)
@@ -49,15 +49,15 @@
         var modal = document.getElementById('restriction-modal');
         if (modal) {
           modal.classList.add('visible');
-          setTimeout(function() { modal.classList.remove('visible'); }, 3000);
+          setTimeout(function () { modal.classList.remove('visible'); }, 3000);
         }
       }
 
       // Close on click overlay
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         var modal = document.getElementById('restriction-modal');
         if (modal) {
-          modal.addEventListener('click', function() { modal.classList.remove('visible'); });
+          modal.addEventListener('click', function () { modal.classList.remove('visible'); });
         }
       });
     })();
@@ -72,17 +72,20 @@
       <!-- Shield Icon -->
       <div id="restriction-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2zm0 10.5h-1.5V7.5H12v5zm0 3h-1.5V14H12v1.5z"/>
+          <path
+            d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2zm0 10.5h-1.5V7.5H12v5zm0 3h-1.5V14H12v1.5z" />
         </svg>
       </div>
 
       <h2 id="restriction-title">Security Alert</h2>
-      <p id="restriction-msg">Developer tools are disabled to maintain the security and integrity of this application.</p>
+      <p id="restriction-msg">Developer tools are disabled to maintain the security and integrity of this application.
+      </p>
 
       <!-- Copyright Notice Box -->
       <div id="restriction-copyright-box">
         <div id="restriction-copyright-label">COPYRIGHT NOTICE</div>
-        <p id="restriction-copyright-text">The source code, design, and content of this site are protected by copyright. Unauthorized copying or republishing will result in a DMCA takedown. Your access has been logged.</p>
+        <p id="restriction-copyright-text">The source code, design, and content of this site are protected by copyright.
+          Unauthorized copying or republishing will result in a DMCA takedown. Your access has been logged.</p>
       </div>
 
       <!-- Reload Button -->
@@ -95,6 +98,8 @@
       </div>
     </div>
   </div>
+
+
 
   <!-- Page Loader -->
   <div class="page-loader" id="pageLoader">
@@ -120,11 +125,13 @@
       <a href="#skills" class="nav-link" data-section="skills">Skills</a>
       <a href="#education" class="nav-link" data-section="education">Education</a>
       <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-      <a href="mailto:devp9137@gmail.com" class="nav-cta">Hire Me</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <a href="mailto:devp9137@gmail.com" class="nav-cta">Hire Me</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- ========== HERO ========== -->
