@@ -2710,7 +2710,7 @@ button {
 .command-palette {
   width: 100%;
   max-width: 600px;
-  background: rgba(15, 15, 20, 0.85);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
